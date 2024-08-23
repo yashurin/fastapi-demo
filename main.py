@@ -38,21 +38,8 @@ async def root(request: Request):
     })
 
 
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))  # Use the PORT environment variable if available
+    uvicorn.run(app, host="0.0.0.0", port=port)
 
 
-# This one works
-# @app.post("/rate")
-# async def root(request: Request):
-#     logging.info('Inside the endpoint')
-#     # Record the timestamp of the incoming request
-#     current_time = time.time()
-#     request_times.append(current_time)
-#
-#     # Remove timestamps older than 1 second
-#     while request_times and current_time - request_times[0] > 1:
-#         request_times.popleft()
-#
-#     # Calculate the rate of requests per second
-#     request_rate = len(request_times)
-#
-#     return JSONResponse(content={"request_rate_per_second": request_rate})
